@@ -79,9 +79,28 @@ public class MovieCollection {
         String search = scan.nextLine();
         ArrayList<String> people = new ArrayList<String>();
         for (int i = 0; i < Movie.actors.size(); i++) {
-            if (Movie.actors.get(i).contains(search)) {
+            if (Movie.actors.get(i).toLowerCase().contains(search.toLowerCase())) {
                 people.add(Movie.actors.get(i));
             }
+        }
+        if (people.size() != 0) {
+            for (int i = 0; i < people.size(); i++) {
+                System.out.println(i + 1 + ". " + people.get(i));
+            }
+            System.out.print("Who would you like to learn more about?\nEnter number: ");
+            int choice = Integer.parseInt(scan.nextLine());
+            if (choice > 0 && choice <= people.size()) {
+                for (int i = 0; i < collection.size(); i++) {
+                    if (collection.get(i).getCast().toString().contains(people.get(choice - 1))) {
+                        //add the movies to a list, let the user choose
+                    }
+                }
+                System.out.println(people.get(choice - 1));
+            } else {
+                System.out.println("Invalid choice");
+            }
+        } else {
+            System.out.println("No matches found");
         }
     }
 
