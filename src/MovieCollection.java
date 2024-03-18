@@ -87,14 +87,15 @@ public class MovieCollection {
             for (int i = 0; i < people.size(); i++) {
                 System.out.println(i + 1 + ". " + people.get(i));
             }
-            System.out.print("Who would you like to learn more about?\nEnter number: ");
+            System.out.print("Which would you like to see all movies for?: ");
             int choice = Integer.parseInt(scan.nextLine());
             if (choice > 0 && choice <= people.size()) {
+                ArrayList<Movie> featuredIn = new ArrayList<Movie>();
                 for (int i = 0; i < collection.size(); i++) {
                     if (collection.get(i).getCast().toString().contains(people.get(choice - 1))) {
-                        //add the movies to a list, let the user choose
+                        featuredIn.add(collection.get(i));
                     }
-                }
+                } //START FROM HERE, PRINT OUT FEATUREDIN
                 System.out.println(people.get(choice - 1));
             } else {
                 System.out.println("Invalid choice");
