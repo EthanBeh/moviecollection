@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.io.File;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.IOException;
 
@@ -92,11 +93,14 @@ public class MovieCollection {
             if (choice > 0 && choice <= people.size()) {
                 ArrayList<Movie> featuredIn = new ArrayList<Movie>();
                 for (int i = 0; i < collection.size(); i++) {
-                    if (collection.get(i).getCast().toString().contains(people.get(choice - 1))) {
+                    if (Arrays.toString(collection.get(i).getCast()).contains(people.get(choice - 1))) {
                         featuredIn.add(collection.get(i));
+                        System.out.println("hit");
                     }
-                } //START FROM HERE, PRINT OUT FEATUREDIN
-                System.out.println(people.get(choice - 1));
+                }
+                for (int i = 0; i < featuredIn.size(); i++) {
+                    System.out.println((i + 1) + ". " + featuredIn.get(i).getName());
+                }
             } else {
                 System.out.println("Invalid choice");
             }
